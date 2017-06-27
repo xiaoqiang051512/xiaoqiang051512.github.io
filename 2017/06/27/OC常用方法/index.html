@@ -1,0 +1,956 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="其它," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1.禁止手机失眠[UIApplication sharedApplication].idleTimerDisabled = YES; 2.动画切换window的根控制器1234567[UIView transitionWithView:[UIApplication sharedApplication].keyWindow duration:0.5f options:UIViewAnimationO">
+<meta name="keywords" content="其它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OC常用方法">
+<meta property="og:url" content="https://github.com/xiaoqiang051512/xiaoqiang051512.github.io/2017/06/27/OC常用方法/index.html">
+<meta property="og:site_name" content="小强5号">
+<meta property="og:description" content="1.禁止手机失眠[UIApplication sharedApplication].idleTimerDisabled = YES; 2.动画切换window的根控制器1234567[UIView transitionWithView:[UIApplication sharedApplication].keyWindow duration:0.5f options:UIViewAnimationO">
+<meta property="og:updated_time" content="2017-06-27T10:21:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OC常用方法">
+<meta name="twitter:description" content="1.禁止手机失眠[UIApplication sharedApplication].idleTimerDisabled = YES; 2.动画切换window的根控制器1234567[UIView transitionWithView:[UIApplication sharedApplication].keyWindow duration:0.5f options:UIViewAnimationO">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/xiaoqiang051512/xiaoqiang051512.github.io/2017/06/27/OC常用方法/"/>
+
+
+
+
+
+  <title> OC常用方法 | 小强5号 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?de5f7eecb9707639a092d57bccd58ae8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">小强5号</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://github.com/xiaoqiang051512/xiaoqiang051512.github.io/2017/06/27/OC常用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘志伟">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小强5号">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                OC常用方法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-27T17:04:16+08:00">
+                2017-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/other/" itemprop="url" rel="index">
+                    <span itemprop="name">other</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h6 id="1-禁止手机失眠"><a href="#1-禁止手机失眠" class="headerlink" title="1.禁止手机失眠"></a>1.禁止手机失眠</h6><p><code>[UIApplication sharedApplication].idleTimerDisabled = YES;</code></p>
+<h6 id="2-动画切换window的根控制器"><a href="#2-动画切换window的根控制器" class="headerlink" title="2.动画切换window的根控制器"></a>2.动画切换window的根控制器</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[UIView transitionWithView:[UIApplication sharedApplication].keyWindow duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:^&#123;</div><div class="line">        BOOL oldState = [UIView areAnimationsEnabled];</div><div class="line">        [UIView setAnimationsEnabled:NO];</div><div class="line">        [UIApplication sharedApplication].keyWindow.rootViewController = [RootViewController new];</div><div class="line">        [UIView setAnimationsEnabled:oldState];</div><div class="line">    &#125; completion:^(BOOL finished) &#123;</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<h6 id="3-去除数组中重复的对象"><a href="#3-去除数组中重复的对象" class="headerlink" title="3.去除数组中重复的对象"></a>3.去除数组中重复的对象</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSArray *newArr = [oldArr valueForKeyPath:@“@distinctUnionOfObjects.self&quot;];</div></pre></td></tr></table></figure>
+<h6 id="4-跳进app权限"><a href="#4-跳进app权限" class="headerlink" title="4.跳进app权限"></a>4.跳进app权限</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (UIApplicationOpenSettingsURLString != NULL) &#123;</div><div class="line">               NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];</div><div class="line">               [[UIApplication sharedApplication] openURL:url];</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<h6 id="5-开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView-tableFooterView-更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。"><a href="#5-开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView-tableFooterView-更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。" class="headerlink" title="5.开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView.tableFooterView = 更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。"></a>5.开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView.tableFooterView = 更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。</h6><h6 id="6-设置navigationBar上的title颜色和大小"><a href="#6-设置navigationBar上的title颜色和大小" class="headerlink" title="6.设置navigationBar上的title颜色和大小"></a>6.设置navigationBar上的title颜色和大小</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self.navigationController.navigationBar setTitleTextAttributes:@&#123;NSForegroundColorAttributeName : [UIColor youColor], NSFontAttributeName : [UIFont systemFontOfSize:15]&#125;]</div></pre></td></tr></table></figure>
+<h6 id="7-颜色转照片"><a href="#7-颜色转照片" class="headerlink" title="7.颜色转照片"></a>7.颜色转照片</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">+ (UIImage *)cl_imageWithColor:(UIColor *)color &#123;</div><div class="line">  CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);</div><div class="line">  UIGraphicsBeginImageContext(rect.size);</div><div class="line">  CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line"> </div><div class="line">  CGContextSetFillColorWithColor(context, [color CGColor]);</div><div class="line">  CGContextFillRect(context, rect);</div><div class="line"> </div><div class="line">  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">  UIGraphicsEndImageContext();</div><div class="line"> </div><div class="line">  return image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="8-强-弱引用"><a href="#8-强-弱引用" class="headerlink" title="8.强/弱引用"></a>8.强/弱引用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#define WeakSelf(type)  __weak typeof(type) weak##type = type; // weak</div><div class="line">#define StrongSelf(type)  __strong typeof(type) type = weak##type; // strong</div></pre></td></tr></table></figure>
+<h6 id="9-获取图片资源"><a href="#9-获取图片资源" class="headerlink" title="9.获取图片资源"></a>9.获取图片资源</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define GetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@&quot;%@&quot;,imageName]]</div></pre></td></tr></table></figure>
+<h6 id="10-角度转弧度"><a href="#10-角度转弧度" class="headerlink" title="10.角度转弧度"></a>10.角度转弧度</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define DegreesToRadian(x) (M_PI * (x) / 180.0)</div></pre></td></tr></table></figure>
+<h6 id="11-弧度转角度"><a href="#11-弧度转角度" class="headerlink" title="11.弧度转角度"></a>11.弧度转角度</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define RadianToDegrees(radian) (radian*180.0)/(M_PI)</div></pre></td></tr></table></figure>
+<h6 id="12-获取temp"><a href="#12-获取temp" class="headerlink" title="12.获取temp"></a>12.获取temp</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define PathTemp NSTemporaryDirectory()</div></pre></td></tr></table></figure>
+<h6 id="13-获取沙盒-Document"><a href="#13-获取沙盒-Document" class="headerlink" title="13. 获取沙盒 Document"></a>13. 获取沙盒 Document</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define PathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]</div></pre></td></tr></table></figure>
+<h6 id="14-获取沙盒-Cache"><a href="#14-获取沙盒-Cache" class="headerlink" title="14. 获取沙盒 Cache"></a>14. 获取沙盒 Cache</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define PathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]</div></pre></td></tr></table></figure>
+<h6 id="15-GCD只执行一次"><a href="#15-GCD只执行一次" class="headerlink" title="15.GCD只执行一次"></a>15.GCD只执行一次</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;onceToken, onceBlock);</div></pre></td></tr></table></figure>
+<h6 id="16-自定义NSLog"><a href="#16-自定义NSLog" class="headerlink" title="16.自定义NSLog"></a>16.自定义NSLog</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#ifdef DEBUG</div><div class="line">#define NSLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)</div><div class="line">#else</div><div class="line">#define NSLog(...)</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h6 id="17-Font"><a href="#17-Font" class="headerlink" title="17.Font"></a>17.Font</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#define FontL(s)             [UIFont systemFontOfSize:s weight:UIFontWeightLight]</div><div class="line">#define FontR(s)             [UIFont systemFontOfSize:s weight:UIFontWeightRegular]</div><div class="line">#define FontB(s)             [UIFont systemFontOfSize:s weight:UIFontWeightBold]</div><div class="line">#define FontT(s)             [UIFont systemFontOfSize:s weight:UIFontWeightThin]</div><div class="line">#define Font(s)              FontL(s)</div></pre></td></tr></table></figure>
+<h6 id="18-在主线程上运行"><a href="#18-在主线程上运行" class="headerlink" title="18.在主线程上运行"></a>18.在主线程上运行</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);</div></pre></td></tr></table></figure>
+<h6 id="19-开启异步线程"><a href="#19-开启异步线程" class="headerlink" title="19.开启异步线程"></a>19.开启异步线程</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl);</div></pre></td></tr></table></figure>
+<h6 id="20-通知"><a href="#20-通知" class="headerlink" title="20.通知"></a>20.通知</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#define NOTIF_ADD(n, f)     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(f) name:n object:nil]</div><div class="line">#define NOTIF_POST(n, o)    [[NSNotificationCenter defaultCenter] postNotificationName:n object:o]</div><div class="line">#define NOTIF_REMV()        [[NSNotificationCenter defaultCenter] removeObserver:self]</div></pre></td></tr></table></figure>
+<h6 id="21-获取window"><a href="#21-获取window" class="headerlink" title="21.获取window"></a>21.获取window</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">+(UIWindow*)getWindow &#123;</div><div class="line">    UIWindow* win = nil; //[UIApplication sharedApplication].keyWindow;</div><div class="line">    for (id item in [UIApplication sharedApplication].windows) &#123;</div><div class="line">        if ([item class] == [UIWindow class]) &#123;</div><div class="line">            if (!((UIWindow*)item).hidden) &#123;</div><div class="line">                win = item;</div><div class="line">                break;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return win;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="22-修改textField的PlaceHold的字体颜色和大小"><a href="#22-修改textField的PlaceHold的字体颜色和大小" class="headerlink" title="22.修改textField的PlaceHold的字体颜色和大小"></a>22.修改textField的PlaceHold的字体颜色和大小</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[textField setValue:[UIColor redColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];</div><div class="line">[textField setValue:[UIFont boldSystemFontOfSize:16] forKeyPath:@&quot;_placeholderLabel.font&quot;];</div></pre></td></tr></table></figure>
+<h6 id="23-统一手气键盘"><a href="#23-统一手气键盘" class="headerlink" title="23.统一手气键盘"></a>23.统一手气键盘</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[[UIApplication sharedApplication] keyWindow] endEditing:YES];</div></pre></td></tr></table></figure>
+<h6 id="24-获取app缓存大小"><a href="#24-获取app缓存大小" class="headerlink" title="24.获取app缓存大小"></a>24.获取app缓存大小</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (CGFloat)getCachSize &#123;</div><div class="line"> </div><div class="line">    NSUInteger imageCacheSize = [[SDImageCache sharedImageCache] getSize];</div><div class="line">    //获取自定义缓存大小</div><div class="line">    //用枚举器遍历 一个文件夹的内容</div><div class="line">    //1.获取 文件夹枚举器</div><div class="line">    NSString *myCachePath = [NSHomeDirectory() stringByAppendingPathComponent:@&quot;Library/Caches&quot;];</div><div class="line">    NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:myCachePath];</div><div class="line">    __block NSUInteger count = 0;</div><div class="line">    //2.遍历</div><div class="line">    for (NSString *fileName in enumerator) &#123;</div><div class="line">        NSString *path = [myCachePath stringByAppendingPathComponent:fileName];</div><div class="line">        NSDictionary *fileDict = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil];</div><div class="line">        count += fileDict.fileSize;//自定义所有缓存大小</div><div class="line">    &#125;</div><div class="line">    // 得到是字节  转化为M</div><div class="line">    CGFloat totalSize = ((CGFloat)imageCacheSize+count)/1024/1024;</div><div class="line">    return totalSize;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="25-清理app缓存"><a href="#25-清理app缓存" class="headerlink" title="25.清理app缓存"></a>25.清理app缓存</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (void)handleClearView &#123;</div><div class="line">    //删除两部分</div><div class="line">    //1.删除 sd 图片缓存</div><div class="line">    //先清除内存中的图片缓存</div><div class="line">    [[SDImageCache sharedImageCache] clearMemory];</div><div class="line">    //清除磁盘的缓存</div><div class="line">    [[SDImageCache sharedImageCache] clearDisk];</div><div class="line">    //2.删除自己缓存</div><div class="line">    NSString *myCachePath = [NSHomeDirectory() stringByAppendingPathComponent:@&quot;Library/Caches&quot;];</div><div class="line">    [[NSFileManager defaultManager] removeItemAtPath:myCachePath error:nil];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="26-模型转字典"><a href="#26-模型转字典" class="headerlink" title="26.模型转字典"></a>26.模型转字典</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">static NSSet *classes;</div><div class="line"> </div><div class="line">- (NSMutableDictionary *)getParameterDictionary &#123;</div><div class="line"> </div><div class="line">    NSMutableDictionary *dict = [NSMutableDictionary dictionary];</div><div class="line"> </div><div class="line">    Class c = self.class;</div><div class="line"> </div><div class="line">    while (c) &#123;</div><div class="line">        unsigned count;</div><div class="line">        objc_property_t *properties = class_copyPropertyList([c class], &amp;count);</div><div class="line"> </div><div class="line">        for (int i = 0; i &lt; count; i++) &#123;</div><div class="line">            NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];</div><div class="line">            dict[key] = [self valueForKey:key];</div><div class="line">        &#125;</div><div class="line">        free(properties);</div><div class="line"> </div><div class="line">        // 获得父类</div><div class="line">        c = class_getSuperclass(c);</div><div class="line"> </div><div class="line">        if ([self isClassFromFoundation:c]) break;</div><div class="line">    &#125;</div><div class="line">    return dict;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- (BOOL)isClassFromFoundation:(Class)c</div><div class="line">&#123;</div><div class="line">    if (c == [NSObject class] || c == [NSManagedObject class]) return YES;</div><div class="line"> </div><div class="line">    __block BOOL result = NO;</div><div class="line">    [[self foundationClasses] enumerateObjectsUsingBlock:^(Class foundationClass, BOOL *stop) &#123;</div><div class="line">        if ([c isSubclassOfClass:foundationClass]) &#123;</div><div class="line">            result = YES;</div><div class="line">            *stop = YES;</div><div class="line">        &#125;</div><div class="line">    &#125;];</div><div class="line">    return result;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- (NSSet *)foundationClasses</div><div class="line">&#123;</div><div class="line">    if (classes == nil) &#123;</div><div class="line">        // 集合中没有NSObject，因为几乎所有的类都是继承自NSObject，具体是不是NSObject需要特殊判断</div><div class="line">        classes = [NSSet setWithObjects:</div><div class="line">                              [NSURL class],</div><div class="line">                              [NSDate class],</div><div class="line">                              [NSValue class],</div><div class="line">                              [NSData class],</div><div class="line">                              [NSError class],</div><div class="line">                              [NSArray class],</div><div class="line">                              [NSDictionary class],</div><div class="line">                              [NSString class],</div><div class="line">                              [NSAttributedString class], nil];</div><div class="line">    &#125;</div><div class="line">    return classes;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="27-交换两个方法实现"><a href="#27-交换两个方法实现" class="headerlink" title="27.交换两个方法实现"></a>27.交换两个方法实现</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Class aClass = [self class]; </div><div class="line"> </div><div class="line">        SEL originalSelector = @selector(viewWillAppear:); </div><div class="line">        SEL swizzledSelector = @selector(xxx_viewWillAppear:); </div><div class="line"> </div><div class="line">        Method originalMethod = class_getInstanceMethod(aClass, originalSelector); </div><div class="line">        Method swizzledMethod = class_getInstanceMethod(aClass, swizzledSelector); </div><div class="line"> </div><div class="line">        BOOL didAddMethod = </div><div class="line">            class_addMethod(aClass, </div><div class="line">                originalSelector, </div><div class="line">                method_getImplementation(swizzledMethod), </div><div class="line">                method_getTypeEncoding(swizzledMethod)); </div><div class="line"> </div><div class="line">        if (didAddMethod) &#123; </div><div class="line">            class_replaceMethod(aClass, </div><div class="line">                swizzledSelector, </div><div class="line">                method_getImplementation(originalMethod), </div><div class="line">                method_getTypeEncoding(originalMethod)); </div><div class="line">        &#125; else &#123; </div><div class="line">            method_exchangeImplementations(originalMethod, swizzledMethod); </div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>####### 28.常用权限判断<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied) &#123;</div><div class="line">       NSLog(@&quot;没有定位权限&quot;);</div><div class="line">   &#125;</div><div class="line">   AVAuthorizationStatus statusVideo = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];</div><div class="line">   if (statusVideo == AVAuthorizationStatusDenied) &#123;</div><div class="line">       NSLog(@&quot;没有摄像头权限&quot;);</div><div class="line">   &#125;</div><div class="line">   //是否有麦克风权限</div><div class="line">   AVAuthorizationStatus statusAudio = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];</div><div class="line">   if (statusAudio == AVAuthorizationStatusDenied) &#123;</div><div class="line">       NSLog(@&quot;没有录音权限&quot;);</div><div class="line">   &#125;</div><div class="line">   [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) &#123;</div><div class="line">       if (status == PHAuthorizationStatusDenied) &#123;</div><div class="line">           NSLog(@&quot;没有相册权限&quot;);</div><div class="line">       &#125;</div><div class="line">   &#125;];</div></pre></td></tr></table></figure></p>
+<h6 id="29-获取手机型号"><a href="#29-获取手机型号" class="headerlink" title="29.获取手机型号"></a>29.获取手机型号</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"> + (NSString *)getDeviceInfo &#123;</div><div class="line">    struct utsname systemInfo;</div><div class="line">    uname(&amp;systemInfo);</div><div class="line">    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSASCIIStringEncoding];</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone1,1&quot;]) return @&quot;iPhone 2G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone1,2&quot;]) return @&quot;iPhone 3G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone2,1&quot;]) return @&quot;iPhone 3GS&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone3,1&quot;]) return @&quot;iPhone 4&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone3,2&quot;]) return @&quot;iPhone 4&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone3,3&quot;]) return @&quot;iPhone 4&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone4,1&quot;]) return @&quot;iPhone 4S&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone5,1&quot;]) return @&quot;iPhone 5&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone5,2&quot;]) return @&quot;iPhone 5&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone5,3&quot;]) return @&quot;iPhone 5c&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone5,4&quot;]) return @&quot;iPhone 5c&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone6,1&quot;]) return @&quot;iPhone 5s&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone6,2&quot;]) return @&quot;iPhone 5s&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone7,1&quot;]) return @&quot;iPhone 6 Plus&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone7,2&quot;]) return @&quot;iPhone 6&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone8,1&quot;]) return @&quot;iPhone 6s&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone8,2&quot;]) return @&quot;iPhone 6s Plus&quot;;</div><div class="line">    // 日行两款手机型号均为日本独占，可能使用索尼FeliCa支付方案而不是苹果支付</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone9,1&quot;])    return @&quot;国行、日版、港行iPhone 7&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone9,2&quot;])    return @&quot;港行、国行iPhone 7 Plus&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone9,3&quot;])    return @&quot;美版、台版iPhone 7&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone9,4&quot;])    return @&quot;美版、台版iPhone 7 Plus&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPhone8,4&quot;]) return @&quot;iPhone SE&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPod1,1&quot;]) return @&quot;iPod Touch 1G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPod2,1&quot;]) return @&quot;iPod Touch 2G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPod3,1&quot;]) return @&quot;iPod Touch 3G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPod4,1&quot;]) return @&quot;iPod Touch 4G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPod5,1&quot;]) return @&quot;iPod Touch 5G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad1,1&quot;]) return @&quot;iPad 1G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad2,1&quot;]) return @&quot;iPad 2&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad2,2&quot;]) return @&quot;iPad 2&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad2,3&quot;]) return @&quot;iPad 2&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad2,4&quot;]) return @&quot;iPad 2&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad2,5&quot;]) return @&quot;iPad Mini 1G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad2,6&quot;]) return @&quot;iPad Mini 1G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad2,7&quot;]) return @&quot;iPad Mini 1G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad3,1&quot;]) return @&quot;iPad 3&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad3,2&quot;]) return @&quot;iPad 3&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad3,3&quot;]) return @&quot;iPad 3&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad3,4&quot;]) return @&quot;iPad 4&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad3,5&quot;]) return @&quot;iPad 4&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad3,6&quot;]) return @&quot;iPad 4&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad4,1&quot;]) return @&quot;iPad Air&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad4,2&quot;]) return @&quot;iPad Air&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad4,3&quot;]) return @&quot;iPad Air&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad4,4&quot;]) return @&quot;iPad Mini 2G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad4,5&quot;]) return @&quot;iPad Mini 2G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;iPad4,6&quot;]) return @&quot;iPad Mini 2G&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;i386&quot;]) return @&quot;iPhone Simulator&quot;;</div><div class="line">    if ([platform isEqualToString:@&quot;x86_64&quot;]) return @&quot;iPhone Simulator&quot;;</div><div class="line">    return platform;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="30-长按复制功能"><a href="#30-长按复制功能" class="headerlink" title="30.长按复制功能"></a>30.长按复制功能</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [self.view addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pasteBoard:)]];</div><div class="line">&#125;</div><div class="line">- (void)pasteBoard:(UILongPressGestureRecognizer *)longPress &#123;</div><div class="line">    if (longPress.state == UIGestureRecognizerStateBegan) &#123;</div><div class="line">        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];</div><div class="line">        pasteboard.string = @&quot;需要复制的文本&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="31-判断图片类型"><a href="#31-判断图片类型" class="headerlink" title="31.判断图片类型"></a>31.判断图片类型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">//通过图片Data数据第一个字节 来获取图片扩展名</div><div class="line">- (NSString *)contentTypeForImageData:(NSData *)data</div><div class="line">&#123;</div><div class="line">    uint8_t c;</div><div class="line">    [data getBytes:&amp;c length:1];</div><div class="line">    switch (c)</div><div class="line">    &#123;</div><div class="line">        case 0xFF:</div><div class="line">            return @&quot;jpeg&quot;;</div><div class="line"> </div><div class="line">        case 0x89:</div><div class="line">            return @&quot;png&quot;;</div><div class="line"> </div><div class="line">        case 0x47:</div><div class="line">            return @&quot;gif&quot;;</div><div class="line"> </div><div class="line">        case 0x49:</div><div class="line">        case 0x4D:</div><div class="line">            return @&quot;tiff&quot;;</div><div class="line"> </div><div class="line">        case 0x52:</div><div class="line">        if ([data length] &lt; 12) &#123;</div><div class="line">            return nil;</div><div class="line">        &#125;</div><div class="line"> </div><div class="line">        NSString *testString = [[NSString alloc] initWithData:[data subdataWithRange:NSMakeRange(0, 12)] encoding:NSASCIIStringEncoding];</div><div class="line">        if ([testString hasPrefix:@&quot;RIFF&quot;]</div><div class="line">            &amp;&amp; [testString hasSuffix:@&quot;WEBP&quot;])</div><div class="line">        &#123;</div><div class="line">            return @&quot;webp&quot;;</div><div class="line">        &#125;</div><div class="line"> </div><div class="line">        return nil;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    return nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="32-获取手机和app信息"><a href="#32-获取手机和app信息" class="headerlink" title="32.获取手机和app信息"></a>32.获取手机和app信息</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];  </div><div class="line"> CFShow(infoDictionary);  </div><div class="line">// app名称  </div><div class="line"> NSString *app_Name = [infoDictionary objectForKey:@&quot;CFBundleDisplayName&quot;];  </div><div class="line"> // app版本  </div><div class="line"> NSString *app_Version = [infoDictionary objectForKey:@&quot;CFBundleShortVersionString&quot;];  </div><div class="line"> // app build版本  </div><div class="line"> NSString *app_build = [infoDictionary objectForKey:@&quot;CFBundleVersion&quot;];  </div><div class="line"> </div><div class="line"> </div><div class="line"> </div><div class="line">    //手机序列号  </div><div class="line">    NSString* identifierNumber = [[UIDevice currentDevice] uniqueIdentifier];  </div><div class="line">    NSLog(@&quot;手机序列号: %@&quot;,identifierNumber);  </div><div class="line">    //手机别名： 用户定义的名称  </div><div class="line">    NSString* userPhoneName = [[UIDevice currentDevice] name];  </div><div class="line">    NSLog(@&quot;手机别名: %@&quot;, userPhoneName);  </div><div class="line">    //设备名称  </div><div class="line">    NSString* deviceName = [[UIDevice currentDevice] systemName];  </div><div class="line">    NSLog(@&quot;设备名称: %@&quot;,deviceName );  </div><div class="line">    //手机系统版本  </div><div class="line">    NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];  </div><div class="line">    NSLog(@&quot;手机系统版本: %@&quot;, phoneVersion);  </div><div class="line">    //手机型号  </div><div class="line">    NSString* phoneModel = [[UIDevice currentDevice] model];  </div><div class="line">    NSLog(@&quot;手机型号: %@&quot;,phoneModel );  </div><div class="line">    //地方型号  （国际化区域名称）  </div><div class="line">    NSString* localPhoneModel = [[UIDevice currentDevice] localizedModel];  </div><div class="line">    NSLog(@&quot;国际化区域名称: %@&quot;,localPhoneModel );  </div><div class="line"> </div><div class="line">    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];  </div><div class="line">    // 当前应用名称  </div><div class="line">    NSString *appCurName = [infoDictionary objectForKey:@&quot;CFBundleDisplayName&quot;];  </div><div class="line">    NSLog(@&quot;当前应用名称：%@&quot;,appCurName);  </div><div class="line">    // 当前应用软件版本  比如：1.0.1  </div><div class="line">    NSString *appCurVersion = [infoDictionary objectForKey:@&quot;CFBundleShortVersionString&quot;];  </div><div class="line">    NSLog(@&quot;当前应用软件版本:%@&quot;,appCurVersion);  </div><div class="line">    // 当前应用版本号码   int类型  </div><div class="line">    NSString *appCurVersionNum = [infoDictionary objectForKey:@&quot;CFBundleVersion&quot;];  </div><div class="line">    NSLog(@&quot;当前应用版本号码：%@&quot;,appCurVersionNum);</div></pre></td></tr></table></figure>
+<h6 id="33-获取一个类的所有属性"><a href="#33-获取一个类的所有属性" class="headerlink" title="33.获取一个类的所有属性"></a>33.获取一个类的所有属性</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">id LenderClass = objc_getClass(&quot;Lender&quot;);</div><div class="line">unsigned int outCount, i;</div><div class="line">objc_property_t *properties = class_copyPropertyList(LenderClass, &amp;outCount);</div><div class="line">for (i = 0; i &lt; outCount; i++) &#123;</div><div class="line">    objc_property_t property = properties[i];</div><div class="line">    fprintf(stdout, &quot;%s %s\n&quot;, property_getName(property), property_getAttributes(property));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="34-image的圆角"><a href="#34-image的圆角" class="headerlink" title="34.image的圆角"></a>34.image的圆角</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">- (UIImage *)circleImage</div><div class="line">&#123;</div><div class="line">    // NO代表透明</div><div class="line">    UIGraphicsBeginImageContextWithOptions(self.size, NO, 1);</div><div class="line">    // 获得上下文</div><div class="line">    CGContextRef ctx = UIGraphicsGetCurrentContext();</div><div class="line">    // 添加一个圆</div><div class="line">    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);</div><div class="line">    // 方形变圆形</div><div class="line">    CGContextAddEllipseInRect(ctx, rect);</div><div class="line">    // 裁剪</div><div class="line">    CGContextClip(ctx);</div><div class="line">    // 将图片画上去</div><div class="line">    [self drawInRect:rect];</div><div class="line">    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    return image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="35-image拉伸"><a href="#35-image拉伸" class="headerlink" title="35.image拉伸"></a>35.image拉伸</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+ (UIImage *)resizableImage:(NSString *)imageName</div><div class="line">&#123;</div><div class="line">    UIImage *image = [UIImage imageNamed:imageName];</div><div class="line">    CGFloat imageW = image.size.width;</div><div class="line">    CGFloat imageH = image.size.height;</div><div class="line">    return [image resizableImageWithCapInsets:UIEdgeInsetsMake(imageH * 0.5, imageW * 0.5, imageH * 0.5, imageW * 0.5) resizingMode:UIImageResizingModeStretch];</div></pre></td></tr></table></figure>
+<h6 id="36-Json字符转字典"><a href="#36-Json字符转字典" class="headerlink" title="36.Json字符转字典"></a>36.Json字符转字典</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">+ (NSDictionary *)parseJSONStringToNSDictionary:(NSString *)JSONString &#123;</div><div class="line">    NSData *JSONData = [JSONString dataUsingEncoding:NSUTF8StringEncoding];</div><div class="line">    NSDictionary *responseJSON = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:nil];</div><div class="line">    return responseJSON;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="37-身份证号验证"><a href="#37-身份证号验证" class="headerlink" title="37.身份证号验证"></a>37.身份证号验证</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">- (BOOL)validateIdentityCard &#123;</div><div class="line">    BOOL flag;</div><div class="line">    if (self.length &lt;= 0) &#123;</div><div class="line">        flag = NO;</div><div class="line">        return flag;</div><div class="line">    &#125;</div><div class="line">    NSString *regex2 = @&quot;^(\\d&#123;14&#125;|\\d&#123;17&#125;)(\\d|[xX])$&quot;;</div><div class="line">    NSPredicate *identityCardPredicate = [NSPredicate predicateWithFormat:@&quot;SELF MATCHES %@&quot;,regex2];</div><div class="line">    return [identityCardPredicate evaluateWithObject:self];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="38-获取mac地址"><a href="#38-获取mac地址" class="headerlink" title="38.获取mac地址"></a>38.获取mac地址</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">+ (NSString *)macAddress &#123;</div><div class="line">    int                 mib[6];</div><div class="line">    size_t              len;</div><div class="line">    char                *buf;</div><div class="line">    unsigned char       *ptr;</div><div class="line">    struct if_msghdr    *ifm;</div><div class="line">    struct sockaddr_dl  *sdl;</div><div class="line"> </div><div class="line">    mib[0] = CTL_NET;</div><div class="line">    mib[1] = AF_ROUTE;</div><div class="line">    mib[2] = 0;</div><div class="line">    mib[3] = AF_LINK;</div><div class="line">    mib[4] = NET_RT_IFLIST;</div><div class="line"> </div><div class="line">    if((mib[5] = if_nametoindex(&quot;en0&quot;)) == 0) &#123;</div><div class="line">        printf(&quot;Error: if_nametoindex error\n&quot;);</div><div class="line">        return NULL;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    if(sysctl(mib, 6, NULL, &amp;len, NULL, 0) &lt; 0) &#123;</div><div class="line">        printf(&quot;Error: sysctl, take 1\n&quot;);</div><div class="line">        return NULL;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    if((buf = malloc(len)) == NULL) &#123;</div><div class="line">        printf(&quot;Could not allocate memory. Rrror!\n&quot;);</div><div class="line">        return NULL;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    if(sysctl(mib, 6, buf, &amp;len, NULL, 0) &lt; 0) &#123;</div><div class="line">        printf(&quot;Error: sysctl, take 2&quot;);</div><div class="line">        return NULL;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    ifm = (struct if_msghdr *)buf;</div><div class="line">    sdl = (struct sockaddr_dl *)(ifm + 1);</div><div class="line">    ptr = (unsigned char *)LLADDR(sdl);</div><div class="line">    NSString *outstring = [NSString stringWithFormat:@&quot;X:X:X:X:X:X&quot;,</div><div class="line">                           *ptr, *(ptr+1), *(ptr+2), *(ptr+3), *(ptr+4), *(ptr+5)];</div><div class="line">    free(buf);</div><div class="line"> </div><div class="line">    return outstring;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="39-拿到当前正在显示的控制器，不管是push进去的，还是present进去的都能拿到"><a href="#39-拿到当前正在显示的控制器，不管是push进去的，还是present进去的都能拿到" class="headerlink" title="39.拿到当前正在显示的控制器，不管是push进去的，还是present进去的都能拿到"></a>39.拿到当前正在显示的控制器，不管是push进去的，还是present进去的都能拿到</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">- (UIViewController *)getVisibleViewControllerFrom:(UIViewController*)vc &#123;</div><div class="line">    if ([vc isKindOfClass:[UINavigationController class]]) &#123;</div><div class="line">        return [self getVisibleViewControllerFrom:[((UINavigationController*) vc) visibleViewController]];</div><div class="line">    &#125;else if ([vc isKindOfClass:[UITabBarController class]])&#123;</div><div class="line">        return [self getVisibleViewControllerFrom:[((UITabBarController*) vc) selectedViewController]];</div><div class="line">    &#125; else &#123;</div><div class="line">        if (vc.presentedViewController) &#123;</div><div class="line">            return [self getVisibleViewControllerFrom:vc.presentedViewController];</div><div class="line">        &#125; else &#123;</div><div class="line">            return vc;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="40-runtime动态增加一个属性-以及获取动态增加的属性"><a href="#40-runtime动态增加一个属性-以及获取动态增加的属性" class="headerlink" title="40.runtime动态增加一个属性 以及获取动态增加的属性"></a>40.runtime动态增加一个属性 以及获取动态增加的属性</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 动态添加属性的本质是: 让对象的某个属性与值产生关联</div><div class="line">        objc_setAssociatedObject(self, WZBPlaceholderViewKey, placeholderView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);</div><div class="line">        objc_getAssociatedObject(self, WZBPlaceholderViewKey);</div></pre></td></tr></table></figure>
+<h6 id="41-KVO监听某个对象的属性"><a href="#41-KVO监听某个对象的属性" class="headerlink" title="41.KVO监听某个对象的属性"></a>41.KVO监听某个对象的属性</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 添加监听者</div><div class="line">[self addObserver:self forKeyPath:property options:NSKeyValueObservingOptionNew context:nil];</div><div class="line"> </div><div class="line">// 当监听的属性值变化的时候会来到这个方法</div><div class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context &#123;</div><div class="line">    if ([keyPath isEqualToString:@&quot;property&quot;]) &#123;</div><div class="line">       [self textViewTextChange];</div><div class="line">       &#125; else &#123;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="42-Reachability判断网络状态"><a href="#42-Reachability判断网络状态" class="headerlink" title="42.Reachability判断网络状态"></a>42.Reachability判断网络状态</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">NetworkStatus status = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];</div><div class="line">    if (status == NotReachable) &#123;</div><div class="line">        NSLog(@&quot;当前设备无网络&quot;);</div><div class="line">    &#125;</div><div class="line">    if (status == ReachableViaWiFi) &#123;</div><div class="line">        NSLog(@&quot;当前wifi网络&quot;);</div><div class="line">    &#125;</div><div class="line">    if (status == NotReachable) &#123;</div><div class="line">        NSLog(@&quot;当前蜂窝移动网络&quot;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h6 id="43-AFNetworking监听网络状态"><a href="#43-AFNetworking监听网络状态" class="headerlink" title="43.AFNetworking监听网络状态"></a>43.AFNetworking监听网络状态</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// 监听网络状况</div><div class="line">    AFNetworkReachabilityManager *mgr = [AFNetworkReachabilityManager sharedManager];</div><div class="line">    [mgr setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) &#123;</div><div class="line">        switch (status) &#123;</div><div class="line">            case AFNetworkReachabilityStatusUnknown:</div><div class="line">                break;</div><div class="line">            case AFNetworkReachabilityStatusNotReachable: &#123;</div><div class="line">                [SVProgressHUD showInfoWithStatus:@&quot;当前设备无网络&quot;];</div><div class="line">            &#125;</div><div class="line">                break;</div><div class="line">            case AFNetworkReachabilityStatusReachableViaWiFi:</div><div class="line">                [SVProgressHUD showInfoWithStatus:@&quot;当前Wi-Fi网络&quot;];</div><div class="line">                break;</div><div class="line">            case AFNetworkReachabilityStatusReachableViaWWAN:</div><div class="line">                [SVProgressHUD showInfoWithStatus:@&quot;当前蜂窝移动网络&quot;];</div><div class="line">                break;</div><div class="line">            default:</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">    &#125;];</div><div class="line">    [mgr startMonitoring];</div></pre></td></tr></table></figure>
+<h6 id="44-取图片某一点的颜色"><a href="#44-取图片某一点的颜色" class="headerlink" title="44.取图片某一点的颜色"></a>44.取图片某一点的颜色</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">if (point.x &lt; 0 || point.y &lt; 0) return nil;</div><div class="line"></div><div class="line">   CGImageRef imageRef = self.CGImage;</div><div class="line">   NSUInteger width = CGImageGetWidth(imageRef);</div><div class="line">   NSUInteger height = CGImageGetHeight(imageRef);</div><div class="line">   if (point.x &gt;= width || point.y &gt;= height) return nil;</div><div class="line"></div><div class="line">   unsigned char *rawData = malloc(height * width * 4);</div><div class="line">   if (!rawData) return nil;</div><div class="line"></div><div class="line">   CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();</div><div class="line">   NSUInteger bytesPerPixel = 4;</div><div class="line">   NSUInteger bytesPerRow = bytesPerPixel * width;</div><div class="line">   NSUInteger bitsPerComponent = 8;</div><div class="line">   CGContextRef context = CGBitmapContextCreate(rawData,</div><div class="line">                                                width,</div><div class="line">                                                height,</div><div class="line">                                                bitsPerComponent,</div><div class="line">                                                bytesPerRow,</div><div class="line">                                                colorSpace,</div><div class="line">                                                kCGImageAlphaPremultipliedLast</div><div class="line">                                                | kCGBitmapByteOrder32Big);</div><div class="line">   if (!context) &#123;</div><div class="line">       free(rawData);</div><div class="line">       return nil;</div><div class="line">   &#125;</div><div class="line">   CGColorSpaceRelease(colorSpace);</div><div class="line">   CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);</div><div class="line">   CGContextRelease(context);</div><div class="line"></div><div class="line">   int byteIndex = (bytesPerRow * point.y) + point.x * bytesPerPixel;</div><div class="line">   CGFloat red   = (rawData[byteIndex]     * 1.0) / 255.0;</div><div class="line">   CGFloat green = (rawData[byteIndex + 1] * 1.0) / 255.0;</div><div class="line">   CGFloat blue  = (rawData[byteIndex + 2] * 1.0) / 255.0;</div><div class="line">   CGFloat alpha = (rawData[byteIndex + 3] * 1.0) / 255.0;</div><div class="line"></div><div class="line">   UIColor *result = nil;</div><div class="line">   result = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];</div><div class="line">   free(rawData);</div><div class="line">   return result;</div></pre></td></tr></table></figure>
+<h6 id="45-判断图片是否有透明度"><a href="#45-判断图片是否有透明度" class="headerlink" title="45.判断图片是否有透明度"></a>45.判断图片是否有透明度</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"> - (BOOL)hasAlphaChannel</div><div class="line">&#123;</div><div class="line">    CGImageAlphaInfo alpha = CGImageGetAlphaInfo(self.CGImage);</div><div class="line">    return (alpha == kCGImageAlphaFirst ||</div><div class="line">            alpha == kCGImageAlphaLast ||</div><div class="line">            alpha == kCGImageAlphaPremultipliedFirst ||</div><div class="line">            alpha == kCGImageAlphaPremultipliedLast);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="46-获得灰度图"><a href="#46-获得灰度图" class="headerlink" title="46.获得灰度图"></a>46.获得灰度图</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">+ (UIImage*)covertToGrayImageFromImage:(UIImage*)sourceImage</div><div class="line">&#123;</div><div class="line">    int width = sourceImage.size.width;</div><div class="line">    int height = sourceImage.size.height;</div><div class="line"> </div><div class="line">    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();</div><div class="line">    CGContextRef context = CGBitmapContextCreate (nil,width,height,8,0,colorSpace,kCGImageAlphaNone);</div><div class="line">    CGColorSpaceRelease(colorSpace);</div><div class="line"> </div><div class="line">    if (context == NULL) &#123;</div><div class="line">        return nil;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    CGContextDrawImage(context,CGRectMake(0, 0, width, height), sourceImage.CGImage);</div><div class="line">    CGImageRef contextRef = CGBitmapContextCreateImage(context);</div><div class="line">    UIImage *grayImage = [UIImage imageWithCGImage:contextRef];</div><div class="line">    CGContextRelease(context);</div><div class="line">    CGImageRelease(contextRef);</div><div class="line"> </div><div class="line">    return grayImage;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="47-根据bundle中的文件名读取图片"><a href="#47-根据bundle中的文件名读取图片" class="headerlink" title="47.根据bundle中的文件名读取图片"></a>47.根据bundle中的文件名读取图片</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"> + (UIImage *)imageWithFileName:(NSString *)name &#123;</div><div class="line">    NSString *extension = @&quot;png&quot;;</div><div class="line"> </div><div class="line">    NSArray *components = [name componentsSeparatedByString:@&quot;.&quot;];</div><div class="line">    if ([components count] &gt;= 2) &#123;</div><div class="line">        NSUInteger lastIndex = components.count - 1;</div><div class="line">        extension = [components objectAtIndex:lastIndex];</div><div class="line"> </div><div class="line">        name = [name substringToIndex:(name.length-(extension.length+1))];</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    // 如果为Retina屏幕且存在对应图片，则返回Retina图片，否则查找普通图片</div><div class="line">    if ([UIScreen mainScreen].scale == 2.0) &#123;</div><div class="line">        name = [name stringByAppendingString:@&quot;@2x&quot;];</div><div class="line"> </div><div class="line">        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:extension];</div><div class="line">        if (path != nil) &#123;</div><div class="line">            return [UIImage imageWithContentsOfFile:path];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    if ([UIScreen mainScreen].scale == 3.0) &#123;</div><div class="line">        name = [name stringByAppendingString:@&quot;@3x&quot;];</div><div class="line"> </div><div class="line">        NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:extension];</div><div class="line">        if (path != nil) &#123;</div><div class="line">            return [UIImage imageWithContentsOfFile:path];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:extension];</div><div class="line">    if (path) &#123;</div><div class="line">        return [UIImage imageWithContentsOfFile:path];</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    return nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="48-合并两个图片"><a href="#48-合并两个图片" class="headerlink" title="48.合并两个图片"></a>48.合并两个图片</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">+ (UIImage*)mergeImage:(UIImage*)firstImage withImage:(UIImage*)secondImage &#123;</div><div class="line">    CGImageRef firstImageRef = firstImage.CGImage;</div><div class="line">    CGFloat firstWidth = CGImageGetWidth(firstImageRef);</div><div class="line">    CGFloat firstHeight = CGImageGetHeight(firstImageRef);</div><div class="line">    CGImageRef secondImageRef = secondImage.CGImage;</div><div class="line">    CGFloat secondWidth = CGImageGetWidth(secondImageRef);</div><div class="line">    CGFloat secondHeight = CGImageGetHeight(secondImageRef);</div><div class="line">    CGSize mergedSize = CGSizeMake(MAX(firstWidth, secondWidth), MAX(firstHeight, secondHeight));</div><div class="line">    UIGraphicsBeginImageContext(mergedSize);</div><div class="line">    [firstImage drawInRect:CGRectMake(0, 0, firstWidth, firstHeight)];</div><div class="line">    [secondImage drawInRect:CGRectMake(0, 0, secondWidth, secondHeight)];</div><div class="line">    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    return image;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="49-为imageView添加倒影"><a href="#49-为imageView添加倒影" class="headerlink" title="49.为imageView添加倒影"></a>49.为imageView添加倒影</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">CGRect frame = self.frame;</div><div class="line">   frame.origin.y += (frame.size.height + 1);</div><div class="line"></div><div class="line">   UIImageView *reflectionImageView = [[UIImageView alloc] initWithFrame:frame];</div><div class="line">   self.clipsToBounds = TRUE;</div><div class="line">   reflectionImageView.contentMode = self.contentMode;</div><div class="line">   [reflectionImageView setImage:self.image];</div><div class="line">   reflectionImageView.transform = CGAffineTransformMakeScale(1.0, -1.0);</div><div class="line"></div><div class="line">   CALayer *reflectionLayer = [reflectionImageView layer];</div><div class="line"></div><div class="line">   CAGradientLayer *gradientLayer = [CAGradientLayer layer];</div><div class="line">   gradientLayer.bounds = reflectionLayer.bounds;</div><div class="line">   gradientLayer.position = CGPointMake(reflectionLayer.bounds.size.width / 2, reflectionLayer.bounds.size.height * 0.5);</div><div class="line">   gradientLayer.colors = [NSArray arrayWithObjects:</div><div class="line">                           (id)[[UIColor clearColor] CGColor],</div><div class="line">                           (id)[[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.3] CGColor], nil];</div><div class="line"></div><div class="line">   gradientLayer.startPoint = CGPointMake(0.5,0.5);</div><div class="line">   gradientLayer.endPoint = CGPointMake(0.5,1.0);</div><div class="line">   reflectionLayer.mask = gradientLayer;</div><div class="line"></div><div class="line">   [self.superview addSubview:reflectionImageView];</div></pre></td></tr></table></figure>
+<h6 id="50-为图片添加水印"><a href="#50-为图片添加水印" class="headerlink" title="50.为图片添加水印"></a>50.为图片添加水印</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">- (void) setImage:(UIImage *)image withWaterMark:(UIImage *)mark inRect:(CGRect)rect</div><div class="line">&#123;</div><div class="line">    if ([[[UIDevice currentDevice] systemVersion] floatValue] &gt;= 4.0)</div><div class="line">    &#123;</div><div class="line">        UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, 0.0);</div><div class="line">    &#125;</div><div class="line">    //原图</div><div class="line">    [image drawInRect:self.bounds];</div><div class="line">    //水印图</div><div class="line">    [mark drawInRect:rect];</div><div class="line">    UIImage *newPic = UIGraphicsGetImageFromCurrentImageContext();</div><div class="line">    UIGraphicsEndImageContext();</div><div class="line">    self.image = newPic;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="51-让label的文字内容显示在左上／右上／左下／右下／中心顶／中心底部"><a href="#51-让label的文字内容显示在左上／右上／左下／右下／中心顶／中心底部" class="headerlink" title="51.让label的文字内容显示在左上／右上／左下／右下／中心顶／中心底部"></a>51.让label的文字内容显示在左上／右上／左下／右下／中心顶／中心底部</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">自定义UILabel</div><div class="line">// 重写label的textRectForBounds方法</div><div class="line">- (CGRect)textRectForBounds:(CGRect)bounds limitedToNumberOfLines:(NSInteger)numberOfLines &#123;</div><div class="line">    CGRect rect = [super textRectForBounds:bounds limitedToNumberOfLines:numberOfLines];</div><div class="line">    switch (self.textAlignmentType) &#123;</div><div class="line">        case WZBTextAlignmentTypeLeftTop: &#123;</div><div class="line">            rect.origin = bounds.origin;</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case WZBTextAlignmentTypeRightTop: &#123;</div><div class="line">            rect.origin = CGPointMake(CGRectGetMaxX(bounds) - rect.size.width, bounds.origin.y);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case WZBTextAlignmentTypeLeftBottom: &#123;</div><div class="line">            rect.origin = CGPointMake(bounds.origin.x, CGRectGetMaxY(bounds) - rect.size.height);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case WZBTextAlignmentTypeRightBottom: &#123;</div><div class="line">            rect.origin = CGPointMake(CGRectGetMaxX(bounds) - rect.size.width, CGRectGetMaxY(bounds) - rect.size.height);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case WZBTextAlignmentTypeTopCenter: &#123;</div><div class="line">            rect.origin = CGPointMake((CGRectGetWidth(bounds) - CGRectGetWidth(rect)) / 2, CGRectGetMaxY(bounds) - rect.origin.y);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case WZBTextAlignmentTypeBottomCenter: &#123;</div><div class="line">            rect.origin = CGPointMake((CGRectGetWidth(bounds) - CGRectGetWidth(rect)) / 2, CGRectGetMaxY(bounds) - CGRectGetMaxY(bounds) - rect.size.height);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case WZBTextAlignmentTypeLeft: &#123;</div><div class="line">            rect.origin = CGPointMake(0, rect.origin.y);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case WZBTextAlignmentTypeRight: &#123;</div><div class="line">            rect.origin = CGPointMake(rect.origin.x, 0);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        case WZBTextAlignmentTypeCenter: &#123;</div><div class="line">            rect.origin = CGPointMake((CGRectGetWidth(bounds) - CGRectGetWidth(rect)) / 2, (CGRectGetHeight(bounds) - CGRectGetHeight(rect)) / 2);</div><div class="line">        &#125;</div><div class="line">            break;</div><div class="line">        default:</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line">    return rect;</div><div class="line">&#125;</div><div class="line">- (void)drawTextInRect:(CGRect)rect &#123;</div><div class="line">    CGRect textRect = [self textRectForBounds:rect limitedToNumberOfLines:self.numberOfLines];</div><div class="line">    [super drawTextInRect:textRect];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="52-移除字符串中的空格和换行"><a href="#52-移除字符串中的空格和换行" class="headerlink" title="52.移除字符串中的空格和换行"></a>52.移除字符串中的空格和换行</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">+ (NSString *)removeSpaceAndNewline:(NSString *)str &#123;</div><div class="line">    NSString *temp = [str stringByReplacingOccurrencesOfString:@&quot; &quot; withString:@&quot;&quot;];</div><div class="line">    temp = [temp stringByReplacingOccurrencesOfString:@&quot;\r&quot; withString:@&quot;&quot;];</div><div class="line">    temp = [temp stringByReplacingOccurrencesOfString:@&quot;\n&quot; withString:@&quot;&quot;];</div><div class="line">    return temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="53-判断字符串中是否有空格"><a href="#53-判断字符串中是否有空格" class="headerlink" title="53.判断字符串中是否有空格"></a>53.判断字符串中是否有空格</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">+ (BOOL)isBlank:(NSString *)str &#123;</div><div class="line">    NSRange _range = [str rangeOfString:@&quot; &quot;];</div><div class="line">    if (_range.location != NSNotFound) &#123;</div><div class="line">        //有空格</div><div class="line">        return YES;</div><div class="line">    &#125; else &#123;</div><div class="line">        //没有空格</div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="54-获取视屏第一帧"><a href="#54-获取视屏第一帧" class="headerlink" title="54.获取视屏第一帧"></a>54.获取视屏第一帧</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">NSURL *url = [NSURL URLWithString:filepath];</div><div class="line">    AVURLAsset *asset1 = [[AVURLAsset alloc] initWithURL:url options:nil];</div><div class="line">    AVAssetImageGenerator *generate1 = [[AVAssetImageGenerator alloc] initWithAsset:asset1];</div><div class="line">    generate1.appliesPreferredTrackTransform = YES;</div><div class="line">    NSError *err = NULL;</div><div class="line">    CMTime time = CMTimeMake(1, 2);</div><div class="line">    CGImageRef oneRef = [generate1 copyCGImageAtTime:time actualTime:NULL error:&amp;err];</div><div class="line">    UIImage *one = [[UIImage alloc] initWithCGImage:oneRef];</div><div class="line"> </div><div class="line">    return one;</div></pre></td></tr></table></figure>
+<h6 id="55-获取视频的时长"><a href="#55-获取视频的时长" class="headerlink" title="55.获取视频的时长"></a>55.获取视频的时长</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+ (NSInteger)getVideoTimeByUrlString:(NSString *)urlString &#123;</div><div class="line">    NSURL *videoUrl = [NSURL URLWithString:urlString];</div><div class="line">    AVURLAsset *avUrl = [AVURLAsset assetWithURL:videoUrl];</div><div class="line">    CMTime time = [avUrl duration];</div><div class="line">    int seconds = ceil(time.value/time.timescale);</div><div class="line">    return seconds;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="56-字符串是否为空"><a href="#56-字符串是否为空" class="headerlink" title="56.字符串是否为空"></a>56.字符串是否为空</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+ (BOOL)isEqualToNil:(NSString *)str &#123;</div><div class="line">    return str.length &lt;= 0 || [str isEqualToString:@&quot;&quot;] || !str;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="57-删除NSUserDefaults所有记录"><a href="#57-删除NSUserDefaults所有记录" class="headerlink" title="57.删除NSUserDefaults所有记录"></a>57.删除NSUserDefaults所有记录</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//方法一</div><div class="line">  NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];</div><div class="line"> [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];   </div><div class="line"> //方法二  </div><div class="line">- (void)resetDefaults &#123;   </div><div class="line">  NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];</div><div class="line">     NSDictionary * dict = [defs dictionaryRepresentation];</div><div class="line">     for (id key in dict) &#123;</div><div class="line">          [defs removeObjectForKey:key];</div><div class="line">     &#125;</div><div class="line">      [defs synchronize];</div><div class="line"> &#125;</div><div class="line">// 方法三</div><div class="line">[[NSUserDefaults standardUserDefaults] setPersistentDomain:[NSDictionary dictionary] forName:[[NSBundle mainBundle] bundleIdentifier]];</div></pre></td></tr></table></figure>
+<h6 id="58-禁用系统滑动返回功能"><a href="#58-禁用系统滑动返回功能" class="headerlink" title="58.禁用系统滑动返回功能"></a>58.禁用系统滑动返回功能</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidAppear:(BOOL)animated</div><div class="line">&#123;</div><div class="line">     [super viewDidAppear:animated];</div><div class="line">if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) &#123;self.navigationController.interactivePopGestureRecognizer.delegate = self;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line">- (void)viewWillDisappear:(BOOL)animated &#123;</div><div class="line">    [super viewWillDisappear:animated];</div><div class="line">    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) &#123;self.navigationController.interactivePopGestureRecognizer.delegate = nil;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer</div><div class="line">&#123;</div><div class="line">     return NO;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="59-UILabel设置内边距"><a href="#59-UILabel设置内边距" class="headerlink" title="59.UILabel设置内边距"></a>59.UILabel设置内边距</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">子类化UILabel，重写drawTextInRect方法</div><div class="line">- (void)drawTextInRect:(CGRect)rect &#123;</div><div class="line">    // 边距，上左下右</div><div class="line">    UIEdgeInsets insets = &#123;0, 5, 0, 5&#125;;</div><div class="line">    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="60-UILabel设置文字描边"><a href="#60-UILabel设置文字描边" class="headerlink" title="60.UILabel设置文字描边"></a>60.UILabel设置文字描边</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">子类化UILabel，重写drawTextInRect方法</div><div class="line">- (void)drawTextInRect:(CGRect)rect</div><div class="line">&#123;</div><div class="line">    CGContextRef c = UIGraphicsGetCurrentContext();</div><div class="line">    // 设置描边宽度</div><div class="line">    CGContextSetLineWidth(c, 1);</div><div class="line">    CGContextSetLineJoin(c, kCGLineJoinRound);</div><div class="line">    CGContextSetTextDrawingMode(c, kCGTextStroke);</div><div class="line">    // 描边颜色</div><div class="line">    self.textColor = [UIColor redColor];</div><div class="line">    [super drawTextInRect:rect];</div><div class="line">    // 文本颜色</div><div class="line">    self.textColor = [UIColor yellowColor];</div><div class="line">    CGContextSetTextDrawingMode(c, kCGTextFill);</div><div class="line">    [super drawTextInRect:rect];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####### 61 scrollView滚动到最下边<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CGPoint bottomOffset = CGPointMake(0, scrollView.contentSize.height - scrollView.bounds.size.height);</div><div class="line">[scrollView setContentOffset:bottomOffset animated:YES];</div></pre></td></tr></table></figure></p>
+<p>####### 62 摇一摇功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">1、打开摇一摇功能</div><div class="line">    [UIApplication sharedApplication].applicationSupportsShakeToEdit = YES;</div><div class="line">2、让需要摇动的控制器成为第一响应者</div><div class="line">[self becomeFirstResponder];</div><div class="line">3、实现以下方法</div><div class="line"> </div><div class="line">// 开始摇动</div><div class="line">- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event</div><div class="line">// 取消摇动</div><div class="line">- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event</div><div class="line">// 摇动结束</div><div class="line">- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event</div></pre></td></tr></table></figure></p>
+<h6 id="63-获取图片大小"><a href="#63-获取图片大小" class="headerlink" title="63.获取图片大小"></a>63.获取图片大小</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CGFloat imageWidth = image.size.width;    </div><div class="line">CGFloat imageHeight = imageWidth * image.scale;</div></pre></td></tr></table></figure>
+<p>####### 64.修改UISegmentedControl的字体大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[segment setTitleTextAttributes:@&#123;NSFontAttributeName : [UIFont systemFontOfSize:15.0f]&#125; forState:UIControlStateNormal];</div></pre></td></tr></table></figure></p>
+<h6 id="65-获取一个view所属的控制器"><a href="#65-获取一个view所属的控制器" class="headerlink" title="65.获取一个view所属的控制器"></a>65.获取一个view所属的控制器</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// view分类方法</div><div class="line">- (UIViewController *)belongViewController &#123;</div><div class="line">    for (UIView *next = [self superview]; next; next = next.superview) &#123;</div><div class="line">        UIResponder* nextResponder = [next nextResponder];</div><div class="line">        if ([nextResponder isKindOfClass:[UIViewController class]]) &#123;</div><div class="line">            return (UIViewController *)nextResponder;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return nil;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h6 id="66-在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花"><a href="#66-在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花" class="headerlink" title="66.在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花"></a>66.在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;</div></pre></td></tr></table></figure>
+<h6 id="67-将一个image保存在相册中"><a href="#67-将一个image保存在相册中" class="headerlink" title="67.将一个image保存在相册中"></a>67.将一个image保存在相册中</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);</div><div class="line">或者</div><div class="line">#import</div><div class="line">[[PHPhotoLibrary sharedPhotoLibrary] performChanges:^&#123;</div><div class="line">        PHAssetChangeRequest *changeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];</div><div class="line">        changeRequest.creationDate          = [NSDate date];</div><div class="line">    &#125; completionHandler:^(BOOL success, NSError *error) &#123;</div><div class="line">        if (success) &#123;</div><div class="line">            NSLog(@&quot;successfully saved&quot;);</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            NSLog(@&quot;error saving to photos: %@&quot;, error);</div><div class="line">        &#125;</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
+<h6 id="68-UITextView中打开或禁用复制，剪切，选择，全选等功能"><a href="#68-UITextView中打开或禁用复制，剪切，选择，全选等功能" class="headerlink" title="68.UITextView中打开或禁用复制，剪切，选择，全选等功能"></a>68.UITextView中打开或禁用复制，剪切，选择，全选等功能</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (BOOL)canPerformAction:(SEL)action withSender:(id)sender</div><div class="line">&#123;</div><div class="line">// 返回NO为禁用，YES为开启</div><div class="line">    // 粘贴</div><div class="line">    if (action == @selector(paste:)) return NO;</div><div class="line">    // 剪切</div><div class="line">    if (action == @selector(cut:)) return NO;</div><div class="line">    // 复制</div><div class="line">    if (action == @selector(copy:)) return NO;</div><div class="line">    // 选择</div><div class="line">    if (action == @selector(select:)) return NO;</div><div class="line">    // 选中全部</div><div class="line">    if (action == @selector(selectAll:)) return NO;</div><div class="line">    // 删除</div><div class="line">    if (action == @selector(delete:)) return NO;</div><div class="line">    // 分享</div><div class="line">    if (action == @selector(share)) return NO;</div><div class="line">    return [super canPerformAction:action withSender:sender];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/其它/" rel="tag"># 其它</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/10/我的博客的起源/" rel="prev" title="GithubPages+Hexo+Next搭建博客">
+                GithubPages+Hexo+Next搭建博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/images/avatar.jpg"
+               alt="刘志伟" />
+          <p class="site-author-name" itemprop="name">刘志伟</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个人越懒，明天要做的事就越多</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-禁止手机失眠"><span class="nav-number">1.</span> <span class="nav-text">1.禁止手机失眠</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-动画切换window的根控制器"><span class="nav-number">2.</span> <span class="nav-text">2.动画切换window的根控制器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-去除数组中重复的对象"><span class="nav-number">3.</span> <span class="nav-text">3.去除数组中重复的对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-跳进app权限"><span class="nav-number">4.</span> <span class="nav-text">4.跳进app权限</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView-tableFooterView-更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。"><span class="nav-number">5.</span> <span class="nav-text">5.开发中如果要动态修改tableView的tableHeaderView或者tableFooterView的高度，需要给tableView重新设置，而不是直接更改高度。正确的做法是重新设置一下tableView.tableFooterView = 更改过高度的view。为什么？其实在iOS8以上直接改高度是没有问题的，在iOS8中出现了contentSize不准确的问题，这是解决办法。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-设置navigationBar上的title颜色和大小"><span class="nav-number">6.</span> <span class="nav-text">6.设置navigationBar上的title颜色和大小</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-颜色转照片"><span class="nav-number">7.</span> <span class="nav-text">7.颜色转照片</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#8-强-弱引用"><span class="nav-number">8.</span> <span class="nav-text">8.强/弱引用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#9-获取图片资源"><span class="nav-number">9.</span> <span class="nav-text">9.获取图片资源</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#10-角度转弧度"><span class="nav-number">10.</span> <span class="nav-text">10.角度转弧度</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#11-弧度转角度"><span class="nav-number">11.</span> <span class="nav-text">11.弧度转角度</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-获取temp"><span class="nav-number">12.</span> <span class="nav-text">12.获取temp</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#13-获取沙盒-Document"><span class="nav-number">13.</span> <span class="nav-text">13. 获取沙盒 Document</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#14-获取沙盒-Cache"><span class="nav-number">14.</span> <span class="nav-text">14. 获取沙盒 Cache</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#15-GCD只执行一次"><span class="nav-number">15.</span> <span class="nav-text">15.GCD只执行一次</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#16-自定义NSLog"><span class="nav-number">16.</span> <span class="nav-text">16.自定义NSLog</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#17-Font"><span class="nav-number">17.</span> <span class="nav-text">17.Font</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#18-在主线程上运行"><span class="nav-number">18.</span> <span class="nav-text">18.在主线程上运行</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#19-开启异步线程"><span class="nav-number">19.</span> <span class="nav-text">19.开启异步线程</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#20-通知"><span class="nav-number">20.</span> <span class="nav-text">20.通知</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#21-获取window"><span class="nav-number">21.</span> <span class="nav-text">21.获取window</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#22-修改textField的PlaceHold的字体颜色和大小"><span class="nav-number">22.</span> <span class="nav-text">22.修改textField的PlaceHold的字体颜色和大小</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#23-统一手气键盘"><span class="nav-number">23.</span> <span class="nav-text">23.统一手气键盘</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#24-获取app缓存大小"><span class="nav-number">24.</span> <span class="nav-text">24.获取app缓存大小</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#25-清理app缓存"><span class="nav-number">25.</span> <span class="nav-text">25.清理app缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#26-模型转字典"><span class="nav-number">26.</span> <span class="nav-text">26.模型转字典</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#27-交换两个方法实现"><span class="nav-number">27.</span> <span class="nav-text">27.交换两个方法实现</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#29-获取手机型号"><span class="nav-number">28.</span> <span class="nav-text">29.获取手机型号</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#30-长按复制功能"><span class="nav-number">29.</span> <span class="nav-text">30.长按复制功能</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#31-判断图片类型"><span class="nav-number">30.</span> <span class="nav-text">31.判断图片类型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#32-获取手机和app信息"><span class="nav-number">31.</span> <span class="nav-text">32.获取手机和app信息</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#33-获取一个类的所有属性"><span class="nav-number">32.</span> <span class="nav-text">33.获取一个类的所有属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#34-image的圆角"><span class="nav-number">33.</span> <span class="nav-text">34.image的圆角</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#35-image拉伸"><span class="nav-number">34.</span> <span class="nav-text">35.image拉伸</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#36-Json字符转字典"><span class="nav-number">35.</span> <span class="nav-text">36.Json字符转字典</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#37-身份证号验证"><span class="nav-number">36.</span> <span class="nav-text">37.身份证号验证</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#38-获取mac地址"><span class="nav-number">37.</span> <span class="nav-text">38.获取mac地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#39-拿到当前正在显示的控制器，不管是push进去的，还是present进去的都能拿到"><span class="nav-number">38.</span> <span class="nav-text">39.拿到当前正在显示的控制器，不管是push进去的，还是present进去的都能拿到</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#40-runtime动态增加一个属性-以及获取动态增加的属性"><span class="nav-number">39.</span> <span class="nav-text">40.runtime动态增加一个属性 以及获取动态增加的属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#41-KVO监听某个对象的属性"><span class="nav-number">40.</span> <span class="nav-text">41.KVO监听某个对象的属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#42-Reachability判断网络状态"><span class="nav-number">41.</span> <span class="nav-text">42.Reachability判断网络状态</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#43-AFNetworking监听网络状态"><span class="nav-number">42.</span> <span class="nav-text">43.AFNetworking监听网络状态</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#44-取图片某一点的颜色"><span class="nav-number">43.</span> <span class="nav-text">44.取图片某一点的颜色</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#45-判断图片是否有透明度"><span class="nav-number">44.</span> <span class="nav-text">45.判断图片是否有透明度</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#46-获得灰度图"><span class="nav-number">45.</span> <span class="nav-text">46.获得灰度图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#47-根据bundle中的文件名读取图片"><span class="nav-number">46.</span> <span class="nav-text">47.根据bundle中的文件名读取图片</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#48-合并两个图片"><span class="nav-number">47.</span> <span class="nav-text">48.合并两个图片</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#49-为imageView添加倒影"><span class="nav-number">48.</span> <span class="nav-text">49.为imageView添加倒影</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#50-为图片添加水印"><span class="nav-number">49.</span> <span class="nav-text">50.为图片添加水印</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#51-让label的文字内容显示在左上／右上／左下／右下／中心顶／中心底部"><span class="nav-number">50.</span> <span class="nav-text">51.让label的文字内容显示在左上／右上／左下／右下／中心顶／中心底部</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#52-移除字符串中的空格和换行"><span class="nav-number">51.</span> <span class="nav-text">52.移除字符串中的空格和换行</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#53-判断字符串中是否有空格"><span class="nav-number">52.</span> <span class="nav-text">53.判断字符串中是否有空格</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#54-获取视屏第一帧"><span class="nav-number">53.</span> <span class="nav-text">54.获取视屏第一帧</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#55-获取视频的时长"><span class="nav-number">54.</span> <span class="nav-text">55.获取视频的时长</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#56-字符串是否为空"><span class="nav-number">55.</span> <span class="nav-text">56.字符串是否为空</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#57-删除NSUserDefaults所有记录"><span class="nav-number">56.</span> <span class="nav-text">57.删除NSUserDefaults所有记录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#58-禁用系统滑动返回功能"><span class="nav-number">57.</span> <span class="nav-text">58.禁用系统滑动返回功能</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#59-UILabel设置内边距"><span class="nav-number">58.</span> <span class="nav-text">59.UILabel设置内边距</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#60-UILabel设置文字描边"><span class="nav-number">59.</span> <span class="nav-text">60.UILabel设置文字描边</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#63-获取图片大小"><span class="nav-number">60.</span> <span class="nav-text">63.获取图片大小</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#65-获取一个view所属的控制器"><span class="nav-number">61.</span> <span class="nav-text">65.获取一个view所属的控制器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#66-在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花"><span class="nav-number">62.</span> <span class="nav-text">66.在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#67-将一个image保存在相册中"><span class="nav-number">63.</span> <span class="nav-text">67.将一个image保存在相册中</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#68-UITextView中打开或禁用复制，剪切，选择，全选等功能"><span class="nav-number">64.</span> <span class="nav-text">68.UITextView中打开或禁用复制，剪切，选择，全选等功能</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘志伟</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
