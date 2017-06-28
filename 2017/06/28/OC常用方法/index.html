@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="其它," />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -91,13 +91,13 @@
 
 
 <meta name="description" content="1.禁止手机失眠[UIApplication sharedApplication].idleTimerDisabled = YES; 2.动画切换window的根控制器1234567[UIView transitionWithView:[UIApplication sharedApplication].keyWindow duration:0.5f options:UIViewAnimationO">
-<meta name="keywords" content="其它">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OC常用方法">
 <meta property="og:url" content="https://github.com/xiaoqiang051512/xiaoqiang051512.github.io/2017/06/28/OC常用方法/index.html">
 <meta property="og:site_name" content="小强5号">
 <meta property="og:description" content="1.禁止手机失眠[UIApplication sharedApplication].idleTimerDisabled = YES; 2.动画切换window的根控制器1234567[UIView transitionWithView:[UIApplication sharedApplication].keyWindow duration:0.5f options:UIViewAnimationO">
-<meta property="og:updated_time" content="2017-06-28T07:26:13.000Z">
+<meta property="og:updated_time" content="2017-06-28T07:39:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OC常用方法">
 <meta name="twitter:description" content="1.禁止手机失眠[UIApplication sharedApplication].idleTimerDisabled = YES; 2.动画切换window的根控制器1234567[UIView transitionWithView:[UIApplication sharedApplication].keyWindow duration:0.5f options:UIViewAnimationO">
@@ -366,8 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/other/" itemprop="url" rel="index">
-                    <span itemprop="name">other</span>
+                  <a href="/categories/OC/" itemprop="url" rel="index">
+                    <span itemprop="name">OC</span>
                   </a>
                 </span>
 
@@ -468,6 +468,7 @@
 <h6 id="66-在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花"><a href="#66-在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花" class="headerlink" title="66.在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花"></a>66.在状态栏增加网络请求的菊花，类似safari加载网页的时候状态栏菊花</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[UIApplication sharedApplication].networkActivityIndicatorVisible = YES;</div></pre></td></tr></table></figure>
 <h6 id="67-将一个image保存在相册中"><a href="#67-将一个image保存在相册中" class="headerlink" title="67.将一个image保存在相册中"></a>67.将一个image保存在相册中</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);</div><div class="line">或者</div><div class="line">#import</div><div class="line">[[PHPhotoLibrary sharedPhotoLibrary] performChanges:^&#123;</div><div class="line">        PHAssetChangeRequest *changeRequest = [PHAssetChangeRequest creationRequestForAssetFromImage:image];</div><div class="line">        changeRequest.creationDate          = [NSDate date];</div><div class="line">    &#125; completionHandler:^(BOOL success, NSError *error) &#123;</div><div class="line">        if (success) &#123;</div><div class="line">            NSLog(@&quot;successfully saved&quot;);</div><div class="line">        &#125;</div><div class="line">        else &#123;</div><div class="line">            NSLog(@&quot;error saving to photos: %@&quot;, error);</div><div class="line">        &#125;</div><div class="line">    &#125;];</div></pre></td></tr></table></figure>
 <h6 id="68-UITextView中打开或禁用复制，剪切，选择，全选等功能"><a href="#68-UITextView中打开或禁用复制，剪切，选择，全选等功能" class="headerlink" title="68.UITextView中打开或禁用复制，剪切，选择，全选等功能"></a>68.UITextView中打开或禁用复制，剪切，选择，全选等功能</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (BOOL)canPerformAction:(SEL)action withSender:(id)sender</div><div class="line">&#123;</div><div class="line">// 返回NO为禁用，YES为开启</div><div class="line">    // 粘贴</div><div class="line">    if (action == @selector(paste:)) return NO;</div><div class="line">    // 剪切</div><div class="line">    if (action == @selector(cut:)) return NO;</div><div class="line">    // 复制</div><div class="line">    if (action == @selector(copy:)) return NO;</div><div class="line">    // 选择</div><div class="line">    if (action == @selector(select:)) return NO;</div><div class="line">    // 选中全部</div><div class="line">    if (action == @selector(selectAll:)) return NO;</div><div class="line">    // 删除</div><div class="line">    if (action == @selector(delete:)) return NO;</div><div class="line">    // 分享</div><div class="line">    if (action == @selector(share)) return NO;</div><div class="line">    return [super canPerformAction:action withSender:sender];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -496,7 +497,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/其它/" rel="tag"># 其它</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
         </div>
       
@@ -600,7 +601,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -611,7 +612,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
