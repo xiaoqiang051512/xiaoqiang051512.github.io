@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="小强5号">
 <meta property="og:description" content="前言 项目中数据的安全是非常重要的，2017年后苹果强制iOS开发者必须使用https，这在一定程度提高了项目的安全性，但仅仅靠https和post请求对数据安全的处理其实还是远远不够的。因此项目中我们还需要用到一些加密算法来保护数据。比如说在登录过程中我们会对密码进行MD5处理后再传输给服务器。因此趁有时间总结一下常见的数据加密算法。 数据安全简介 用户隐私数据不允许用明文在网络中传输 用户隐私">
 <meta property="og:image" content="http://oor0l2hfq.bkt.clouddn.com/2230763-803c71cbc7725637-2.png">
-<meta property="og:updated_time" content="2017-06-30T07:04:39.000Z">
+<meta property="og:updated_time" content="2017-07-03T03:33:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS数据安全浅谈">
 <meta name="twitter:description" content="前言 项目中数据的安全是非常重要的，2017年后苹果强制iOS开发者必须使用https，这在一定程度提高了项目的安全性，但仅仅靠https和post请求对数据安全的处理其实还是远远不够的。因此项目中我们还需要用到一些加密算法来保护数据。比如说在登录过程中我们会对密码进行MD5处理后再传输给服务器。因此趁有时间总结一下常见的数据加密算法。 数据安全简介 用户隐私数据不允许用明文在网络中传输 用户隐私">
@@ -491,6 +491,7 @@
 </ul>
 <h6 id="如何在生成公匙-私匙"><a href="#如何在生成公匙-私匙" class="headerlink" title="如何在生成公匙 私匙"></a>如何在生成公匙 私匙</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># MAC上生成公钥、私钥的方法</div><div class="line"> @code</div><div class="line"> 1.打开终端，切换到自己想输出的文件夹下</div><div class="line"> 2.输入指令:openssl（openssl是生成各种秘钥的工具，mac已经嵌入)</div><div class="line"> 3.输入指令:genrsa -out rsa_private_key.pem 1024 (生成私钥，java端使用的)</div><div class="line"> 4.输入指令:rsa -in rsa_private_key.pem -out rsa_public_key.pem -pubout (生成公钥)</div><div class="line"> 5.输入指令:pkcs8 -topk8 -in rsa_private_key.pem -out pkcs8_rsa_private_key.pem -nocrypt(私钥转格式，在ios端使用私钥解密时用这个私钥)</div><div class="line"> 注意:在MAC上生成三个.pem格式的文件，一个公钥，两个私钥，都可以在终端通过指令vim xxx.pem 打开，里面是字符串，第三步生成的私钥是java端用来解密数据的，第五步转换格式的私钥iOS端可以用来调试公钥、私钥解密（因为私钥不留在客户端）</div><div class="line"> iOS端公钥加密私钥解密、java端公钥加密私钥解密，java端私钥加密公钥解密都容易做到，iOS不能私钥加密公钥解密，只能用于验签</div></pre></td></tr></table></figure>
 <h6 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"> @interface RSAUtil : UIViewController</div><div class="line"></div><div class="line">// 公钥加密时调用类方法：</div><div class="line">+ (NSString *)encryptString:(NSString *)str publicKey:(NSString *)pubKey;</div><div class="line">+ (NSData *)encryptData:(NSData *)data publicKey:(NSString *)pubKey;</div><div class="line"></div><div class="line">// 私钥解密时调用类方法</div><div class="line">+ (NSString *)decryptString:(NSString *)str privateKey:(NSString *)privKey;</div><div class="line">+ (NSData *)decryptData:(NSData *)data privateKey:(NSString *)privKey;</div></pre></td></tr></table></figure>
+<p> 附上Demo地址 <a href="https://github.com/xiaoqiang051512/DataSecurity.git">Demo地址</a></p>
 
       
     </div>
