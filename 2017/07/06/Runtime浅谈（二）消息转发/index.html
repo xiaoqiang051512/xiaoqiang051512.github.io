@@ -98,7 +98,7 @@
 <meta property="og:site_name" content="小强5号">
 <meta property="og:description" content="前言先看一段非常熟悉的代码：12345678910111213 unrecognized selector sent to instance 0x1003033002017-07-06 15:33:54.235550+0800 RuntiemDemo[93046:15362573] *** Terminating app due to uncaught exception &amp;apos;NSInva">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/147286-d0bddfa7b3315f53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-07-06T08:33:54.000Z">
+<meta property="og:updated_time" content="2017-07-06T08:44:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Runtime浅谈（二）消息转发">
 <meta name="twitter:description" content="前言先看一段非常熟悉的代码：12345678910111213 unrecognized selector sent to instance 0x1003033002017-07-06 15:33:54.235550+0800 RuntiemDemo[93046:15362573] *** Terminating app due to uncaught exception &amp;apos;NSInva">
@@ -442,7 +442,7 @@
 <p> 关于生成签名的类型”v@:”解释一下。每一个方法会默认隐藏两个参数，self、_cmd，self代表方法调用者，_cmd代表这个方法的SEL，签名类型就是用来描述这个方法的返回值、参数的，v代表返回值为void，@表示self，:表示_cmd。<br> 如果上述3个方法都没有来处理这个消息，就会进入 NSObject 的 <strong> -(void)doesNotRecognizeSelector:(SEL)aSelector </strong>方法中，抛出异常</p>
 <p> <img src="http://upload-images.jianshu.io/upload_images/147286-d0bddfa7b3315f53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <p> 这是一个完整的消息转发机制图。</p>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3>
+
       
     </div>
 
@@ -621,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resolveInstanceMethod-SEL-sel-resolveClassMethod-SEL-sel"><span class="nav-number">2.</span> <span class="nav-text">resolveInstanceMethod:(SEL)sel/resolveClassMethod:(SEL)sel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id-forwardingTargetForSelector-SEL-aSelector"><span class="nav-number">3.</span> <span class="nav-text">- (id)forwardingTargetForSelector:(SEL)aSelector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMethodSignature-methodSignatureForSelector-SEL-aSelector和-void-forwardInvocation-NSInvocation-anInvocation"><span class="nav-number">4.</span> <span class="nav-text">(NSMethodSignature )methodSignatureForSelector:(SEL)aSelector和(void)forwardInvocation:(NSInvocation )anInvocation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它"><span class="nav-number">5.</span> <span class="nav-text">其它</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resolveInstanceMethod-SEL-sel-resolveClassMethod-SEL-sel"><span class="nav-number">2.</span> <span class="nav-text">resolveInstanceMethod:(SEL)sel/resolveClassMethod:(SEL)sel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id-forwardingTargetForSelector-SEL-aSelector"><span class="nav-number">3.</span> <span class="nav-text">- (id)forwardingTargetForSelector:(SEL)aSelector</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NSMethodSignature-methodSignatureForSelector-SEL-aSelector和-void-forwardInvocation-NSInvocation-anInvocation"><span class="nav-number">4.</span> <span class="nav-text">(NSMethodSignature )methodSignatureForSelector:(SEL)aSelector和(void)forwardInvocation:(NSInvocation )anInvocation</span></a></li></ol></div>
             
 
           </div>
